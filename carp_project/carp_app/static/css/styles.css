@@ -1,0 +1,512 @@
+/* ===============================
+   ROOT VARIABLES (WOOD THEME)
+================================ */
+:root {
+  --wood: #7a4a28;
+  --wood-dark: #3b2415;
+  --wood-light: #a56a43;
+  --cream: #f7f2ec;
+  --accent: #d9a441;
+
+  --shadow-soft: 0 10px 30px rgba(0,0,0,0.12);
+  --shadow-strong: 0 25px 60px rgba(0,0,0,0.25);
+
+  --glass: rgba(255,255,255,0.08);
+  --border-glass: rgba(255,255,255,0.18);
+}
+
+.hero-image-stack {
+  position: relative;
+  height: 360px;
+  overflow: hidden;
+  border-radius: 22px;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.25);
+  background: #000;
+}
+
+
+
+/* ===============================
+   GLOBAL STYLES
+================================ */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: #fff;
+  color: var(--text-dark);
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* ===============================
+   NAVBAR
+================================ */
+.navbar {
+  background: var(--wood-dark);
+  padding: 14px 0;
+}
+
+.navbar-brand {
+  font-size: 1.25rem;
+}
+
+.nav-link {
+  color: #fff !important;
+  margin-right: 12px;
+}
+
+.nav-link:hover {
+  color: var(--accent) !important;
+}
+
+/* ===============================
+   BUTTONS
+================================ */
+.btn-wood {
+  background: var(--wood);
+  color: #fff;
+  padding: 12px 26px;
+  border-radius: 30px;
+  font-weight: 600;
+  transition: all .3s ease;
+}
+
+.btn-wood:hover {
+  background: var(--accent);
+  color: #000;
+}
+
+.btn-outline-wood {
+  border: 2px solid var(--wood);
+  color: var(--wood);
+  padding: 10px 24px;
+  border-radius: 30px;
+  font-weight: 600;
+}
+
+.btn-outline-wood:hover {
+  background: var(--wood);
+  color: #fff;
+}
+
+/* ===============================
+   HERO SECTION
+================================ */
+.hero-section {
+  position: relative;
+  padding: 140px 0 100px;
+  overflow: hidden;
+  background-image:
+    linear-gradient(rgba(20,10,5,.75), rgba(20,10,5,.75)),
+    url("../images/wood-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* PARALLAX */
+  color: #fff;
+}
+.hero-parallax-layer {
+  position: absolute;
+  inset: -20%;
+  background-image:
+    linear-gradient(rgba(20,10,5,.75), rgba(20,10,5,.75)),
+    url("../images/wood-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  transform: translateY(0);
+  will-change: transform;
+  z-index: 0;
+}
+
+.hero-section .container {
+  position: relative;
+  z-index: 2;
+}
+.hero-title {
+  font-size: 2.6rem;
+  font-weight: 700;
+}
+
+.hero-sub {
+  color: var(--text-muted);
+  margin-top: 12px;
+}
+
+/* ===============================
+   HERO IMAGE STACK
+================================ */
+
+
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  transform: translateX(100%); /* start outside */
+  transition: transform 0.9s cubic-bezier(.22,.61,.36,1);
+}
+/* active slide */
+.hero-slide.active {
+  transform: translateX(0);
+}
+
+/* slide leaving to left */
+.hero-slide.exit-left {
+  transform: translateX(-100%);
+}
+
+/* mobile */
+@media (max-width: 768px) {
+  .hero-image-stack {
+    height: 260px;
+  }
+}
+
+
+/* ===============================
+   SECTION TITLES
+================================ */
+.section-title {
+  font-size: 2rem;
+  font-weight: 700;
+  position: relative;
+}
+
+.section-title::after {
+  content: "";
+  width: 70px;
+  height: 4px;
+  background: var(--accent);
+  display: block;
+  margin: 12px auto 0;
+  border-radius: 10px;
+}
+
+/* ===============================
+   SERVICES
+================================ */
+.services-section {
+  padding: 80px 0;
+  background: #fff;
+}
+
+.service-card {
+  position: relative;
+  background: linear-gradient(180deg, #fff, #f4efe9);
+  border-radius: 22px;
+  padding: 36px 28px;
+  height: 100%;
+  box-shadow: var(--shadow-soft);
+  transition: all .45s cubic-bezier(.22,.61,.36,1);
+  overflow: hidden;
+}
+
+/* GLOW BORDER */
+.service-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 22px;
+  background: linear-gradient(135deg, transparent, var(--accent), transparent);
+  opacity: 0;
+  transition: opacity .4s;
+}
+
+.service-card:hover::before {
+  opacity: .35;
+}
+
+.service-card:hover {
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: var(--shadow-strong);
+}
+
+.service-card i {
+  font-size: 2.8rem;
+  color: var(--wood);
+  margin-bottom: 18px;
+  display: inline-block;
+  transition: transform .4s ease, color .4s ease;
+}
+
+.service-card:hover i {
+  color: var(--accent);
+  transform: rotate(-6deg) scale(1.15);
+}
+
+
+/* ===============================
+   SHOWCASE
+================================ */
+.showcase-section {
+  padding: 80px 0;
+  background: #fafafa;
+}
+
+.showcase-img {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+}
+
+.showcase-img img {
+  transition: transform .6s ease;
+}
+
+.showcase-img:hover img {
+  transform: scale(1.15);
+}
+
+.showcase-img::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,.5), transparent);
+  opacity: 0;
+  transition: opacity .4s;
+}
+
+.showcase-img:hover::after {
+  opacity: 1;
+}
+
+
+/* ===============================
+   GALLERY
+================================ */
+.page-header {
+  padding: 120px 0 60px;
+  background: var(--cream);
+}
+
+.gallery-section {
+  padding: 60px 0;
+}
+
+.gallery-card {
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+.gallery-card img {
+  transition: transform .4s ease;
+}
+
+.gallery-card img:hover {
+  transform: scale(1.1);
+}
+
+/* ===============================
+   FOOTER
+================================ */
+.footer {
+  background: var(--wood-dark);
+  color: #ddd;
+  padding: 50px 0 30px;
+}
+
+.footer h5,
+.footer h6 {
+  color: #fff;
+}
+
+/* ===============================
+   WHATSAPP FLOAT
+================================ */
+.whatsapp-float {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+
+  width: 56px;
+  height: 56px;
+
+  background: #25D366;
+  color: #fff;
+
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 1.6rem;
+
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  z-index: 999;
+}
+.whatsapp-float:hover {
+  background: #20b858;
+  text-decoration: none;
+  color: #fff;
+}
+
+/* ===============================
+   FADE UP ANIMATION
+================================ */
+.fade-up {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.fade-up.show {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 1s cubic-bezier(.22,.61,.36,1);
+}
+
+.delay-1 { transition-delay: .2s; }
+.delay-2 { transition-delay: .4s; }
+
+/* ===============================
+   RESPONSIVE
+================================ */
+@media (max-width: 768px) {
+  .hero-section {
+    background-attachment: scroll; /* Disable parallax on mobile */
+  }
+
+  .hero-image-stack {
+    height: 280px;
+    margin-top: 30px;
+  }
+}
+/* ===============================
+   CONTACT SECTION
+================================ */
+.contact-section {
+  padding: 80px 0;
+  background: linear-gradient(180deg, #f9f6f2, #ffffff);
+}
+
+.contact-card {
+  background: #fff;
+  padding: 40px;
+  border-radius: 24px;
+  box-shadow: var(--shadow-soft);
+}
+
+.contact-card .form-control {
+  border-radius: 14px;
+  padding: 14px 16px;
+  border: 1px solid #ddd;
+}
+
+.contact-card .form-control:focus {
+  border-color: var(--accent);
+  box-shadow: none;
+}
+
+.whatsapp-link {
+  color: #25D366;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.whatsapp-link i {
+  margin-right: 6px;
+}
+.navbar .nav-link i {
+  color: var(--accent);
+  font-size: 0.9rem;
+}
+
+.navbar-brand i {
+  color: var(--accent);
+  font-size: 1.2rem;
+}
+
+
+.navbar .nav-link:hover i {
+  transform: translateY(-1px);
+  transition: transform 0.2s ease;
+}
+.hero-bg {
+  transform: translateZ(0);
+}
+/* ===============================
+   MAP / LOCATION SECTION
+================================ */
+.map-section {
+  padding: 80px 0;
+  background: #fff;
+}
+
+.location-card {
+  background: linear-gradient(180deg, #fff, #f7f2ec);
+  padding: 36px;
+  border-radius: 22px;
+  box-shadow: var(--shadow-soft);
+}
+
+.location-card h5 i {
+  color: var(--accent);
+}
+
+.map-card {
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: var(--shadow-strong);
+}
+
+.map-card iframe {
+  display: block;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .map-card iframe {
+    height: 260px;
+  }
+}
+/* ===============================
+   TESTIMONIALS
+================================ */
+.testimonial-section {
+  padding: 80px 0;
+  background: linear-gradient(180deg, #f7f2ec, #ffffff);
+}
+
+.testimonial-slider {
+  overflow: hidden;
+  position: relative;
+  margin-top: 40px;
+}
+
+.testimonial-track {
+  display: flex;
+  gap: 24px;
+  transition: transform 0.8s ease-in-out;
+}
+
+.testimonial-card {
+  min-width: 100%;
+  background: #fff;
+  padding: 36px;
+  border-radius: 22px;
+  box-shadow: var(--shadow-soft);
+}
+
+.testimonial-card p {
+  font-style: italic;
+  font-size: 1.05rem;
+  margin-bottom: 16px;
+}
+
+.testimonial-card h6 {
+  font-weight: 600;
+  color: var(--wood);
+}
